@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>Captive Portal</title>
+</head>
+<body>
+<H1>Disclaimer</H1>
+<p>You must accept the terms of use before using the Internet here.</p>
+<form action="{% url 'splash_action' %}" method="post">
+{% csrf_token %}
+<p><input type="checkbox" name="accept" value="accept">I do</p>
+<input type="submit" value="Submit"/>
+</form>
+</body>
+</html>
+
