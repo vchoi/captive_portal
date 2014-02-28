@@ -52,7 +52,7 @@ class Firewall:
 
 	def __init__(self):
 		self.base_rules = settings.CAPTIVE_PORTAL['firewall_rules_template'] % settings.CAPTIVE_PORTAL
-		authorization_rule_template = settings.CAPTIVE_PORTAL['authorization_rule_template']
+		self.authorization_rule_template = settings.CAPTIVE_PORTAL['authorization_rule_template']
 
 	def _run_cmd(self, cmd):
 		try:
