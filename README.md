@@ -9,10 +9,12 @@ My Notes
 * Create a django project: ```$ django-admin.py startproject mylanportal```
 * Download the Captive Portal app: ```$ cd mylanportal && git clone https://github.com/vchoi/captive_portal.git```
 * Add captive_portal to INSTALLED_APPS
-* Add CAPTIVE_PORTAL to settings.py (see SETTINGS)
+* Add CAPTIVE_PORTAL to settings.py (see Settings)
 * Copy captive_portal-check_authorizations to /etc/cron.d/
 * ```echo 1 > /proc/sys/net/ipv4/ip_forward```
 * Get a working DHCP server
+* Get a redirector running on port 81. (see Redirector)
+
 
 Management Commands
 -------------------
@@ -28,7 +30,7 @@ Available commands:
 * list_authorizations: list all device authorizations, valid or not
 * reload_firewall: reload the firewall rules template and add any valid device authorizations
 
-SETTINGS
+Settings
 --------
 
 Add this to your project's settings.py
@@ -94,3 +96,17 @@ COMMIT
 """
 ``` 
 }
+
+Redirector
+----------
+nginx example:
+
+```
+# nginx  
+server {
+  listen                127.0.0.1:81;
+  server_name           _;
+  return 307 http://10.0.0.1/cp;
+    
+}
+```
