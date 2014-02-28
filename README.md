@@ -6,13 +6,13 @@ django captive portal.
 
 My Notes
 --------
-* Create a django project: $ django-admin.py startproject mylanportal
-* Download the Captive Portal app: $ cd mylanportal ; git clone https://github.com/vchoi/captive_portal.git
+* Create a django project: ```$ django-admin.py startproject mylanportal```
+* Download the Captive Portal app: ```$ cd mylanportal && git clone https://github.com/vchoi/captive_portal.git```
 * Add captive_portal to INSTALLED_APPS
 * Add CAPTIVE_PORTAL to settings.py (see SETTINGS)
 * Copy captive_portal-check_authorizations to /etc/cron.d/
-* echo 1 > /proc/sys/net/ipv4/ip_forward
-* Get a working DHCP
+* ```echo 1 > /proc/sys/net/ipv4/ip_forward```
+* Get a working DHCP server
 
 Management Commands
 -------------------
