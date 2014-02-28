@@ -1,0 +1,8 @@
+# /etc/cron.d/captive_portal-check_authorizations
+VIRTUALENV_PATH="/path/to/virtualenv"
+DJANGO_PROJECT_NAME="djangoproject"
+
+# discard output if MAILTO is empty
+MAILTO=""
+
+* * * * * root bash -c "source $VIRTUALENV_PATH/bin/activate && cd $VIRTUALENV_PATH/$DJANGO_PROJECT_NAME && python manage.py check_authorizations"
