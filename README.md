@@ -6,31 +6,34 @@ django captive portal.
 
 My Notes
 --------
- . Create a django project: $ django-admin.py startproject mylanportal
- . Download the Captive Portal app: $ cd mylanportal ; git clone https://github.com/vchoi/captive_portal.git
- . Add captive_portal to INSTALLED_APPS
- . Add CAPTIVE_PORTAL to settings.py (see SETTINGS)
- . Copy captive_portal-check_authorizations to /etc/cron.d/
- . echo 1 > /proc/sys/net/ipv4/ip_forward
- . Get a working DHCP
+* Create a django project: $ django-admin.py startproject mylanportal
+* Download the Captive Portal app: $ cd mylanportal ; git clone https://github.com/vchoi/captive_portal.git
+* Add captive_portal to INSTALLED_APPS
+* Add CAPTIVE_PORTAL to settings.py (see SETTINGS)
+* Copy captive_portal-check_authorizations to /etc/cron.d/
+* echo 1 > /proc/sys/net/ipv4/ip_forward
+* Get a working DHCP
 
 Management Commands
 -------------------
 
 Management commands are run like this:
- # python manage.py management_command
+```
+python manage.py management_command
+```
 
 Available commands:
- . check_authorizations: check for expired device authorizations, delete them from firewall and database
- . clear_authorizations: clear all device authorizations
- . list_authorizations: list all device authorizations, valid or not
- . reload_firewall: reload the firewall rules template and add any valid device authorizations
+* check_authorizations: check for expired device authorizations, delete them from firewall and database
+* clear_authorizations: clear all device authorizations
+* list_authorizations: list all device authorizations, valid or not
+* reload_firewall: reload the firewall rules template and add any valid device authorizations
 
 SETTINGS
 --------
 
 Add this to your project's settings.py
 
+```python
 CAPTIVE_PORTAL = {
     'LAN_IF': 'eth0',
     'LAN_IP': '10.0.0.1',
@@ -89,5 +92,5 @@ COMMIT
 -A whitelist -p tcp --dport 80 -d %(LAN_IP)s -j ACCEPT
 COMMIT
 """
-
+``` 
 }
