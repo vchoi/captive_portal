@@ -110,3 +110,21 @@ server {
     
 }
 ```
+
+Same thing, using jfryman/puppet-nginx:
+```puppet
+    class {'nginx':
+        manage_repo => false,
+    }
+
+    # redirector vhost
+    nginx::resource::vhost {'redirector':
+        # not really needed, but the puppet module complains if not present
+        www_root => '/var/www/',
+        #autoindex => 'on',
+        # don't know why, but doesn't work when bound to 127.0.0.1
+        listen_ip => '0.0.0.0',
+        listen_port => '81',
+        vhost_cfg_prepend => { 'return' => '307 http://10.0.0.1/cp', }
+    }
+```
