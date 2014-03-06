@@ -1,10 +1,8 @@
-# Captive Portal upstart config
+# sample Captive Portal upstart config
 
 description "captive portal"
 start on runlevel [2345]
 stop on runlevel [06]
-
-# activate virtualenv
-#source /path/to/virtualenv/bin/activate
+respawn
 
 exec uwsgi --plugin python --socket 127.0.0.1:3031 --chdir /path/to/django-project --master --processes 2 --die-on-term --wsgi-file djangoproject/wsgi.py
