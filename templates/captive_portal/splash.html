@@ -1,8 +1,8 @@
-<html>
-<head>
-<title>Captive Portal</title>
-</head>
-<body>
+{% extends "captive_portal/base.html" %}
+
+{% block title %}Captive Portal{% endblock %}
+
+{% block body %}
 <H1>Disclaimer</H1>
 <p>You must accept the terms of use before using the Internet here.</p>
 <form action="{% url 'splash_action' %}" method="post">
@@ -10,6 +10,5 @@
 <p><input type="checkbox" name="accept" value="accept">I do</p>
 <input type="submit" value="Submit"/>
 </form>
-</body>
-</html>
+{% endblock %}
 
