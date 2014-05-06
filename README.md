@@ -33,6 +33,19 @@ Available commands:
 Settings
 --------
 
+Add this to your project's wsgi.py
+```python
+#import os
+#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ project_name }}.settings")
+
+# Load firewall rules on startup
+from captive_portal.util import Firewall
+Firewall().reload_rules()
+
+#from django.core.wsgi import get_wsgi_application
+#application = get_wsgi_application()
+```
+
 Add this to your project's settings.py
 
 ```python
