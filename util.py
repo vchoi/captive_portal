@@ -80,6 +80,9 @@ class Firewall:
 
 	def add_authorization(self, device_authorization):
 		logger = logging.getLogger()
+		if device_authorization.is_expired():
+			logger.debug('not activating expired device authorization: %s' % device_authorization)
+			return
                 logger.debug('activating device authorization: %s' % device_authorization)
 
 		cmd = settings.CAPTIVE_PORTAL['iptables']

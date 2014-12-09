@@ -5,11 +5,14 @@ import datetime
 import pytz
 
 # Create your models here.
+
 _tz = pytz.timezone(settings.TIME_ZONE)
 def _now():
+	""" Shortcut for tz-aware now() """
 	return datetime.datetime.now(_tz)
 
 def _midnight():
+	""" Shortcut for midnight in current tz """
 	now = _now()
 	return datetime.datetime(now.year, now.month, now.day, 23, 59, 59, tzinfo=_tz)
 
@@ -34,6 +37,12 @@ class DeviceAuthorization(models.Model):
 			self.id,
 			self.mac_address, self.ip_address, self.created,
 			self.expires)
+
+	def is_expired(self):
+                if self.expires < _now():
+			return True
+		else:
+			return False
 
 	@staticmethod
 	def filter_not_expired():
