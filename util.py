@@ -54,6 +54,12 @@ class Firewall:
 		self.base_rules = settings.CAPTIVE_PORTAL['firewall_rules_template'] % settings.CAPTIVE_PORTAL
 		self.authorization_rule_template = settings.CAPTIVE_PORTAL['authorization_rule_template']
 
+               # load kernel modules
+               modprobe = settings.CAPTIVE_PORTAL['modprobe']:
+               for kernel_module in settings.CAPTIVE_PORTAL['kernel_modules']:
+                       cmd += ("%s %s" % (modprobe, kernel_module))
+                       self._run_cmd(cmd)
+
 	def _run_cmd(self, cmd):
 		try:
                         child = subprocess.check_call(cmd.split(), stderr=subprocess.PIPE)

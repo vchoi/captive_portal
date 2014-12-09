@@ -54,6 +54,8 @@ CAPTIVE_PORTAL = {
     'LAN_IP': '10.0.0.1',
     'WAN_IF': 'eth1',
     'WAN_IP': '192.0.2.1',
+    'modprobe': '/sbin/modprobe',
+    'kernel_modules': ['nf_conntrack_sip', 'nf_conntrack_h323', 'nf_conntrack_irc'],
     'iptables-restore': '/sbin/iptables-restore',
     'iptables': '/sbin/iptables',
     'authorization_rule_template': '-s %(ip)s -m mac --mac-source %(mac)s -j MARK --set-mark 1',
